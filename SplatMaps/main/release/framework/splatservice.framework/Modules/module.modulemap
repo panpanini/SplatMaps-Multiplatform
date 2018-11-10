@@ -1,0 +1,6 @@
+framework module splatservice {
+    umbrella header "splatservice.h"
+
+    export *
+    module * { export * }
+}

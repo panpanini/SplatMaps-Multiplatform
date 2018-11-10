@@ -1,0 +1,3 @@
+include ':app', ':splatservice'
+
+enableFeaturePreview('GRADLE_METADATA')

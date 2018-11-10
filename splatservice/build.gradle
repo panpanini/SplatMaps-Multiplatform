@@ -1,0 +1,101 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'http://dl.bintray.com/kotlin/kotlin-eap' }
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin-multiplatform'
+apply plugin: 'com.android.library'
+
+
+apply plugin: 'kotlinx-serialization'
+
+repositories {
+    maven { url "https://kotlin.bintray.com/kotlin/kotlinx" }
+    maven { url "https://kotlin.bintray.com/kotlinx" }
+    maven { url "https://kotlin.bintray.com/ktor" }
+    google()
+    jcenter()
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+    }
+    buildTypes {
+        debug {
+        }
+        release {
+        }
+    }
+}
+
+kotlin {
+    targets {
+        fromPreset(presets.android, 'android')
+        fromPreset(presets.iosX64, 'iosX64')
+        fromPreset(presets.iosArm64, 'iosArm64')
+        fromPreset(presets.js, 'js') {
+            compilations.main {
+                configure([compileKotlinJs, compileTestKotlinJs]) {
+                    kotlinOptions {
+                        languageVersion = "1.3"
+                        sourceMap = true
+                        metaInfo = true
+                        moduleKind = "umd"
+                    }
+                }
+            }
+        }
+
+        configure([iosX64, iosArm64]) {
+            compilations.main.outputKinds('FRAMEWORK')
+        }
+    }
+    sourceSets {
+        iosMain
+        configure([androidMain]) {
+            dependsOn commonMain
+        }
+        configure([iosX64Main, iosArm64Main]) {
+            dependsOn iosMain
+        }
+    }
+}
+
+dependencies {
+    commonMainImplementation "io.ktor:ktor-client:$ktor_version"
+    commonMainImplementation "org.jetbrains.kotlinx:atomicfu-common:0.11.12"
+    commonMainImplementation fileTree(dir: 'libs', include: ['*.jar'])
+    commonMainImplementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.9.0"
+    commonMainImplementation"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+
+    // Android
+    androidMainImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version"
+    androidMainImplementation "io.ktor:ktor-client-android:$ktor_version"
+
+
+    //iOS
+    iosMainImplementation "io.ktor:ktor-client-ios:$ktor_version"
+    iosMainImplementation 'org.jetbrains.kotlinx:atomicfu-native:0.11.12'
+    iosArm64MainImplementation "io.ktor:ktor-client-ios_debug_ios_arm64:$ktor_version"
+    iosX64MainImplementation "io.ktor:ktor-client-ios_debug_ios_x64:$ktor_version"
+    iosMainImplementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.9.0"
+
+
+
+
+    // JS
+    jsMainImplementation "io.ktor:ktor-client-js:$ktor_version"
+}
+
