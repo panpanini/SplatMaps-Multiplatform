@@ -2,6 +2,7 @@ package jp.co.panpanini.splatservice
 
 import jp.co.panpanini.MutableObservable
 import jp.co.panpanini.splatservice.model.schedule.Schedule
+import jp.co.panpanini.splatservice.dispatcher.ApplicationDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -21,7 +22,9 @@ class SplatViewModel {
     fun fetchSchedule() {
         GlobalScope.apply {
             launch(ApplicationDispatcher) {
-                schedule.set(service.fetchSchedule())
+                launch(Dispatchers.Main) {
+                    schedule.set(service.fetchSchedule())
+                }
             }
         }
     }

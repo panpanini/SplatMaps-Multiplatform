@@ -11,6 +11,7 @@ repositories {
     maven { url "https://kotlin.bintray.com/kotlin/kotlinx" }
     maven { url "https://kotlin.bintray.com/kotlinx" }
     maven { url "https://kotlin.bintray.com/ktor" }
+    maven { url "http://localhost:8081/artifactory/gradle-release"}
     google()
     jcenter()
 }
@@ -44,6 +45,11 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.0.1'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.9.0"
+    // picasso
+    implementation("com.squareup.picasso:picasso:2.71828")
+
+    // Timber
+    implementation("com.jakewharton.timber:timber:4.7.0")
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
@@ -51,6 +57,7 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version"
     implementation "io.ktor:ktor-client-android:$ktor_version"
-    implementation project(':splatservice')
+//    implementation project(':splatservice')
+    implementation "jp.co.panpanini:splatservice:+"
 
 }

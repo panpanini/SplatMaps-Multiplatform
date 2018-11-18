@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="5dp"
+    tools:backgroundTint="@color/cardview_dark_background"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            tools:text="Tuesday" />
+
+        <ImageView
+            android:id="@+id/stage_1_image"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginEnd="2dp"
+            android:contentDescription="@string/stage_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@id/stage_name"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/stage_2_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:srcCompat="@drawable/stage" />
+
+        <TextView
+            android:id="@+id/stage_1_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="@id/stage_1_image"
+            app:layout_constraintStart_toStartOf="@id/stage_1_image"
+            app:layout_constraintTop_toBottomOf="@id/stage_1_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            tools:text="Marooner's Bay"
+            />
+
+        <ImageView
+            android:id="@+id/stage_2_image"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="2dp"
+            android:contentDescription="@string/stage_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/stage_1_image"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/stage_1_image"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:srcCompat="@drawable/stage" />
+
+        <TextView
+            android:id="@+id/stage_2_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="@id/stage_2_image"
+            app:layout_constraintStart_toStartOf="@id/stage_2_image"
+            app:layout_constraintTop_toBottomOf="@id/stage_2_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            tools:text="Humpback Pump Track"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

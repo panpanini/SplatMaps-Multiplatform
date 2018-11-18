@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SplatoonCoroutine</string>
+    <string name="stage_image">stage image</string>
 </resources>

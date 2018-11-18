@@ -1,4 +1,4 @@
-package jp.co.panpanini.splatservice
+package jp.co.panpanini.splatservice.dispatcher
 
 import kotlin.coroutines.*
 import kotlinx.coroutines.*
