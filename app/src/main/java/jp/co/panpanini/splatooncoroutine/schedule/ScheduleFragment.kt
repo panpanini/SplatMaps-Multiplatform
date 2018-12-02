@@ -5,21 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.FragmentPagerAdapter
 import jp.co.panpanini.splatservice.SplatViewModel
 import jp.co.panpanini.splatooncoroutine.R
 import kotlinx.android.synthetic.main.fragment_tab.*
 
 class ScheduleFragment: Fragment() {
 
-    private val viewModel = SplatViewModel()
-
+    private val viewModel = SplatViewModel.INSTANCE
 
     private val tabs = listOf(MatchType.Regular, MatchType.Gachi, MatchType.League)
 
-    private val adapter by lazy {
+    private val adapter : FragmentPagerAdapter by lazy {
         val activity = activity ?: throw IllegalStateException("activity null")
-        object : FragmentStatePagerAdapter(activity.supportFragmentManager) {
+        object : FragmentPagerAdapter(activity.supportFragmentManager) {
             override fun getItem(position: Int) = MatchFragment.create(tabs[position])
 
             override fun getCount() = tabs.size
@@ -32,10 +31,8 @@ class ScheduleFragment: Fragment() {
                     else -> ""
                 }
             }
-
         }
     }
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_tab, container, false)
@@ -52,6 +49,7 @@ class ScheduleFragment: Fragment() {
             viewModel.fetchSchedule()
 
             view_pager.adapter = adapter
+            view_pager.offscreenPageLimit = 3
         }
     }
 

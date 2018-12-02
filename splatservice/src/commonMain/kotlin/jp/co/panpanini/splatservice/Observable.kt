@@ -14,6 +14,10 @@ open class Observable<T> {
     fun observe(callback: (T?) -> Unit) {
         observers += callback
     }
+
+    fun remove(callback: (T?) -> Unit) {
+        observers -= callback
+    }
 }
 
 class MutableObservable<T> : Observable<T>() {

@@ -9,7 +9,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
-class SplatViewModel {
+class SplatViewModel private constructor() {
     private val service = SplatService()
 
     //TODO: Disposable
@@ -22,10 +22,19 @@ class SplatViewModel {
     fun fetchSchedule() {
         GlobalScope.apply {
             launch(ApplicationDispatcher) {
+                val scheduleVal = service.fetchSchedule()
                 launch(Dispatchers.Main) {
-                    schedule.set(service.fetchSchedule())
+                    schedule.set(scheduleVal)
                 }
             }
         }
+    }
+
+    fun removeObserver(callback: (Schedule?) -> Unit) {
+        schedule.remove(callback)
+    }
+
+    companion object {
+        val INSTANCE = SplatViewModel()
     }
 }

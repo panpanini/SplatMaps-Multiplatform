@@ -1,7 +1,6 @@
 package jp.co.panpanini.splatooncoroutine
 
 import androidx.recyclerview.widget.RecyclerView
-import jp.co.panpanini.splatmaps2.SplatViewHolder
 
 
 abstract class SplatAdapter<in T, VH : SplatViewHolder<T>>: RecyclerView.Adapter<VH>() {

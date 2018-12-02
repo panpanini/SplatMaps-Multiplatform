@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.squareup.picasso.Picasso
-import jp.co.panpanini.splatmaps2.SplatViewHolder
+import jp.co.panpanini.splatooncoroutine.SplatViewHolder
 import jp.co.panpanini.splatooncoroutine.SplatAdapter
 import jp.co.panpanini.splatservice.model.schedule.Match
 import kotlinx.android.synthetic.main.view_match.view.*

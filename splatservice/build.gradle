@@ -107,7 +107,7 @@ dependencies {
 artifactoryPublish {
     groupId = 'jp.co.panpanini'
     artifactId = 'splatservice'
-    publishVersion = '0.0.1'
+    publishVersion = '0.0.4'
     artifactoryUrl = 'http://localhost:8081/artifactory'
     artifactoryRepo = 'gradle-release'
     artifactoryUser = "panpanini"

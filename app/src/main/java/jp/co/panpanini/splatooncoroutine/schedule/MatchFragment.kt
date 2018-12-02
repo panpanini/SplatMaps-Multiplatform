@@ -48,7 +48,7 @@ class MatchFragment: Fragment() {
     }
 
 
-    private val viewModel = SplatViewModel()
+    private val viewModel = SplatViewModel.INSTANCE
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_recycler_view, container, false)
